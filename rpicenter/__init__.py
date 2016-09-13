@@ -2,6 +2,8 @@ from threading import Thread
 from rpicenter import state
 from rpicenter.adapter import Adapter
 
+import RPi.GPIO as gpio
+
 def _check_slot_used(device, slot):
 	for a in state._adapters:
 		if a._device_object_id == id(device) and a._slot == slot:
@@ -48,6 +50,8 @@ def cleanup():
 	state._device_threads = []
 	state._devices = []
 	state._adapters = []
+	
+	gpio.cleanup()
 	
 
 

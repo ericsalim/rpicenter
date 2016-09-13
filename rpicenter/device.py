@@ -9,6 +9,12 @@ class Device:
 	def __init__(self, *slots):
 		self._slots = slots
 	
+	def _pin(self, slot):
+		for a in _adapters:
+			if a._device_object_id == id(self) and a._slot == slot:
+				return a.gpio_pin()
+		raise Exception('Slot {} is not found'.format(slot))
+	
 	def _adapter(self, slot):
 		for a in _adapters:
 			if a._device_object_id == id(self) and a._slot == slot:
