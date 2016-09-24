@@ -9,7 +9,7 @@ class Adapter:
 	def gpio_pin(self):
 		return self._gpio_pin
 	
-	def pin_output(self, value: bool):
+	def pin_output(self, value):
 		print('output slot {} pin {} value {}'.format(self._slot, self._gpio_pin, value))
 		gpio.setmode(gpio.BOARD)
 		gpio.setup(self._gpio_pin, gpio.OUT)
